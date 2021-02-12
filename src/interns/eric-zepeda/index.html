@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Eric Zepeda</title>
+  </head>
+  <body>
+    <!-- Side Bar -->
+    <div class="side-bar-tab">
+      <h1>Eric Zepeda</h1>
+      <button
+        class="about-button side-bar-button"
+        onclick="openTab(event, 'about')"
+      >
+        About Me
+      </button>
+      <button
+        class="lob-button side-bar-button"
+        onclick="openTab(event, 'lob')"
+      >
+        Why Lob?
+      </button>
+      <button
+        class="outside-button side-bar-button"
+        onclick="openTab(event, 'outside')"
+      >
+        Outside of work
+      </button>
+    </div>
+    <!-- infoSections to display on click -->
+    <div class="about-container">
+      <div id="about" class="info-section">
+        <p class="explain">
+          Howdy! My name is Eric Zepeda, but I used to go by Anthony (my middle
+          name). I grew up just north of the city in Marin. I graduated from
+          college in 2017 and have decided to make a career transition because
+          of my fascination with the Software Engineering mindset.
+          <br />
+          I'm a right brain thinker with an appreciation for left brain things.
+          I love that software engineering is a combination of artistry and
+          logic. I love seeing things come to life, and want to leverage the
+          power of technology to help people. Down the line, I envision myself
+          as someone who will help people break from underrepresented groups and
+          non-traditional backgrounds break into the tech industry.
+        </p>
+      </div>
+      <div id="lob" class="info-section">
+        <p class="explain">
+          I want to work at Lob, because I want to work at ridiculous scale. I
+          was very impressed to learn that Lob generated mail reaches 1 in 4
+          americans. I'd love to pick the brains of the engineering team that
+          streamlined Booking.com's process and turned what was a 60 person
+          non-stop mailing job into an automated process. Given the scale that
+          Lob works at, i'm positive that i'd be learning Engineering best
+          practices that i'd then be able to pass onto Junior Engineers once I
+          gain more seniority.
+          <br />
+          After making my first few commits to an open source codebase, I have
+          really fallen in love with the spirit of open source. I want to help
+          create robust User Interfaces for open source technologies that I
+          think will help both Engineers and non-Engineers alike
+        </p>
+      </div>
+      <div id="outside" class="info-section">
+        <p class="explain">
+          Outside of work, I love(d) going to shows, watching NBA basketball,
+          and riding public transportation. My favorite genre of music is
+          <a
+            href="https://www.youtube.com/watch?v=yJNsKqm1Xqc&ab_channel=Videolyke"
+            target="_blank"
+          >
+            dream pop</a
+          >
+          and my favorite team is the Golden State Warriors. I have also been
+          trying to pick up Portuguese as a third language. I am fascinated by
+          the idea of lexical similarity and picked Portuguese partially due to
+          its similarity to Spanish, which is the first language I learned.
+        </p>
+      </div>
+    </div>
+    <!-- Image Container -->
+    <div class="image-container">
+      <img src="me.jpg" height="75%" />
+    </div>
+  </body>
+  <script>
+    let infoSections = document.querySelectorAll('.info-section');
+    let sideBarButtons = document.querySelectorAll('.side-bar-button');
+    openTab(event, 'about');
+
+    sideBarButtons.forEach((button) => {
+      button.addEventListener('mouseenter', (e) => {
+        if (button.style.background !== 'rgb(83, 81, 237)') {
+          button.style.background = 'rgb(123, 132, 173)';
+        }
+      });
+    });
+
+    sideBarButtons.forEach((button) => {
+      button.addEventListener('mouseleave', (e) => {
+        if (button.style.background !== 'rgb(83, 81, 237)') {
+          button.style.background = 'rgb(36, 53, 128)';
+        }
+      });
+    });
+
+    function openTab(evt, tabId) {
+      recolorUnclickedTab();
+      for (let i = 0; i < infoSections.length; i++) {
+        infoSections[i].style.display = 'none';
+      }
+      document.getElementById(tabId).style.display = 'block';
+      document.querySelector(`.${tabId}-button`).style.background =
+        'rgb(83, 81, 237)';
+      document.querySelector(`.${tabId}-button`).style.borderColor =
+        'rgb(83, 81, 237)';
+      // evt.currentTarget.className += ' active';
+    }
+    function recolorUnclickedTab() {
+      for (tab of sideBarButtons) {
+        tab.style.backgroundColor = 'rgb(36, 53, 128)';
+        tab.style.borderColor = 'black';
+      }
+    }
+  </script>
+</html>
